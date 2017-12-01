@@ -20,7 +20,7 @@ $(document).ready(function(){
       });
 
   
-    if(notes.length>0) 
+    if(notes!=null) 
     {
     document.getElementById("resume-heading").innerHTML= "<span class='new-resume-heading'>NOTES<span>"
     var listElement=document.createElement("ul"); 
