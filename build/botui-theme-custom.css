@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 .botui-container{
-	/*padding: 20% 0px;*/
+	/* padding: 5% 0px; */
 	font-size:14px;
 	/*background-color:#fff;*/
 	font-family:"Open Sans",sans-serif}
@@ -23,7 +23,27 @@
 
 
 @media (min-width:375px) and (max-width: 790px){
-	.botui-message-content{
+
+.botui-container{
+	/* padding: 5% 0px; */
+	font-size:14px;
+	/*background-color:#fff;*/
+	font-family:"Open Sans",sans-serif
+}
+}
+
+@media (min-width:790px){
+
+.botui-container{
+	padding: 0px;
+	font-size:14px;
+	/*background-color:#fff;*/
+	font-family:"Open Sans",sans-serif
+ }
+}
+
+
+.botui-message-content{
 		max-width: 70%;
 	}
 
@@ -74,6 +94,7 @@
 	border:1px solid #919292;
 	background:#777979}
 
+@media (min-width: 540px) {
 .botui-actions-buttons-button{
 	border: white;
     color: #fff;
@@ -87,6 +108,26 @@
     border-radius: 4px;
     font-family: "Open Sans",sans-serif;
     background: #77797900;
+}
+}
+
+@media (min-width: 375px) and (max-width: 539px){
+.botui-actions-buttons-button{
+	width:100%;
+	border: white;
+    color: #fff;
+    border-style: solid;
+    border-width: 2px;
+    line-height: 1;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 7px 15px;
+    border-radius: 4px;
+    font-family: "Open Sans",sans-serif;
+    background: #77797900;
+}
+}
 
 .slide-fade-enter-active{
 	transition:all .3s ease}
@@ -112,45 +153,4 @@
 	animation:loading .6s .1s linear infinite}@keyframes loading{0{
 		transform:translate(0,0);
 		background-color:#ababab}25%{transform:translate(0,-3px)}50%{transform:translate(0,0);background-color:#ababab}75%{transform:translate(0,3px)}100%{transform:translate(0,0)}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
