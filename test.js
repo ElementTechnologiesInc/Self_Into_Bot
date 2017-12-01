@@ -1,9 +1,7 @@
 $(document).ready(function(){
     var notes= JSON.parse(localStorage.getItem("resume"));
     
-      $('.drawer').drawer();
-
-      $('.drawer').drawer({
+   $('.drawer').drawer({
         class: {
           nav: 'drawer-nav',
           toggle: 'drawer-toggle',
