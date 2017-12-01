@@ -1,24 +1,24 @@
 $(document).ready(function(){
-  console.log("Ready");
-    
-   $('.drawer').drawer({
-       console.log("Works");
-        class: {
-          nav: 'drawer-nav',
-          toggle: 'drawer-toggle',
-          overlay: 'drawer-overlay',
-          open: 'drawer-open',
-          close: 'drawer-close',
-          dropdown: 'drawer-dropdown'
-        },
-        iscroll: {
-          mouseWheel: true,
-          preventDefault: false
-        },
-        showOverlay: true
-      });
 
-  
+
+  $('.drawer').drawer({
+    class: {
+      nav: 'drawer-nav',
+      toggle: 'drawer-toggle',
+      overlay: 'drawer-overlay',
+      open: 'drawer-open',
+      close: 'drawer-close',
+      dropdown: 'drawer-dropdown'
+    },
+    iscroll: {
+      mouseWheel: true,
+      preventDefault: false
+    },
+    showOverlay: true
+  });
+
+
+
  }); 
 
 
@@ -655,6 +655,20 @@ var deleteListItem = function(text,msgno){
       }
  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
