@@ -1,6 +1,5 @@
 $(document).ready(function(){
-    var notes= JSON.parse(localStorage.getItem("resume"));
-     console.log("Ready");
+  console.log("Ready");
     
    $('.drawer').drawer({
        console.log("Works");
@@ -20,27 +19,6 @@ $(document).ready(function(){
       });
 
   
-    if(notes!=null) 
-    {
-    document.getElementById("resume-heading").innerHTML= "<span class='new-resume-heading'>NOTES<span>"
-    var listElement=document.createElement("ul"); 
-        //listElement.id= "ullist";
-        listElement.setAttribute("id","ullist");
-        document.getElementById("resume-heading").appendChild(listElement); 
-
-        for(var i=0; i<notes.length; i++){
-        var liItem=document.createElement("li");
-        //liItem.className="liClass";
-        liItem.setAttribute("class","liClass");
-        liItem.appendChild(document.createTextNode(notes[i]));
-        listElement.appendChild(liItem);
-    }
-
-  }
-  else {
-     document.getElementById("resume-heading").innerHTML= " <h2 class ='bkmark'>Bookmark messages that you wish to make a note of<h2>"
-  }
-
  }); 
 
 
