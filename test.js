@@ -17,7 +17,26 @@ $(document).ready(function(){
     showOverlay: true
   });
 
+var notes= JSON.parse(localStorage.getItem("resume"));
 
+if(notes!=null && notes.length>0 ) 
+    {
+    document.getElementById("resume-heading").innerHTML= "<span class='new-resume-heading'>NOTES<span>"
+    var listElement=document.createElement("ul"); 
+    listElement.setAttribute("id","ullist");
+    document.getElementById("resume-heading").appendChild(listElement); 
+
+    for(var i=0; i<notes.length; i++){
+    var liItem=document.createElement("li");
+    liItem.setAttribute("class","liClass");
+    liItem.appendChild(document.createTextNode(notes[i]));
+    listElement.appendChild(liItem);
+    }
+
+  }
+  else {
+     document.getElementById("resume-heading").innerHTML= " <h2 class ='bkmark'>Bookmark messages that you wish to make a note of<h2>"
+  }
 
  }); 
 
