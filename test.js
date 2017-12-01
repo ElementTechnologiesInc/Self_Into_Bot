@@ -1,5 +1,23 @@
 $(document).ready(function(){
     var notes= JSON.parse(localStorage.getItem("resume"));
+    
+      $('.drawer').drawer();
+
+      $('.drawer').drawer({
+        class: {
+          nav: 'drawer-nav',
+          toggle: 'drawer-toggle',
+          overlay: 'drawer-overlay',
+          open: 'drawer-open',
+          close: 'drawer-close',
+          dropdown: 'drawer-dropdown'
+        },
+        iscroll: {
+          mouseWheel: true,
+          preventDefault: false
+        },
+        showOverlay: true
+      });
 
   
     if(notes.length>0) 
@@ -22,25 +40,6 @@ $(document).ready(function(){
   else {
      document.getElementById("resume-heading").innerHTML= " <h2 class ='bkmark'>Bookmark messages that you wish to make a note of<h2>"
   }
-
-  $('.drawer').drawer();
-
-  $('.drawer').drawer({
-    class: {
-      nav: 'drawer-nav',
-      toggle: 'drawer-toggle',
-      overlay: 'drawer-overlay',
-      open: 'drawer-open',
-      close: 'drawer-close',
-      dropdown: 'drawer-dropdown'
-    },
-    iscroll: {
-      mouseWheel: true,
-      preventDefault: false
-    },
-    showOverlay: true
-  });
-
 
  }); 
 
