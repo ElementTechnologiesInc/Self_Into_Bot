@@ -112,7 +112,7 @@ var botui = new BotUI('hello-world');
         if(res.value == 'reach_out') {
           return botui.message.bot({ 
            delay: 1000, 
-           content: 'Shoot me a mail at samadrid@andrew.cmu.edu or connect to me https://www.linkedin.com/in/samadrita-das', 
+           content: 'Shoot me a mail at samadrid@andrew.cmu.edu or connect to me on linkedin', 
 
             }).then(function(index){
                      setTimeout(showBookmark(index),1500);   
