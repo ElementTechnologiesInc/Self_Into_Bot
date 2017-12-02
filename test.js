@@ -239,6 +239,14 @@ var botui = new BotUI('hello-world');
                         content: 'I pursued design in my undergraduate. It was here when I was formally introduced to the world that does the magic behind and beyond the screens 🖥️'
                         });
                       }).then(function(index){
+                        setTimeout(showBookmark(index),1500);   
+                        }).then(function(){
+                        return botui.message.bot({ 
+                        // show first message
+                        delay: 1000,
+                        content: 'Questions like how would people make sense of the growing technology would fascinate me. This brought me to CMU to study HCI '
+                        });
+                      }).then(function(index){
                       setTimeout(showBookmark(index),1500);   
                       }).then(function () {
              return botui.action.button({ // let user do something
