@@ -1,5 +1,6 @@
 $(document).ready(function(){
-
+   
+  //$('.drawer-hamburger').css({"padding":"40px 1.75rem 40px"});
 
   $('.drawer').drawer({
     class: {
@@ -16,6 +17,9 @@ $(document).ready(function(){
     },
     showOverlay: true
   });
+
+
+
 
 var notes= JSON.parse(localStorage.getItem("resume"));
 
@@ -94,7 +98,6 @@ var botui = new BotUI('hello-world');
   }).then(function () {
 
             return botui.action.button({ 
-            delay: 1000,
             action: [
               {
                 text: 'Okay! Got it',
@@ -112,7 +115,7 @@ var botui = new BotUI('hello-world');
         if(res.value == 'reach_out') {
           return botui.message.bot({ 
            delay: 1000, 
-           content: 'Shoot me a mail at samadrid@andrew.cmu.edu or connect to me on linkedin', 
+           content: 'Shoot me a mail at samadrid@andrew.cmu.edu', 
 
             }).then(function(index){
                      setTimeout(showBookmark(index),1500);   
@@ -126,7 +129,7 @@ var botui = new BotUI('hello-world');
         } 
 
         else {
-          botui.message.bot({ // second one
+          return botui.message.bot({ // second one
           delay: 1000, // wait 1 sec.
           content: 'Great'
           }).then(function () {
@@ -139,29 +142,83 @@ var botui = new BotUI('hello-world');
                       
                     },
                     {
-                      text: 'Tell me about your work',
+                      text: 'Where have you worked',
                       value: 'work_ex'
                      
                     }
                   ]
                 });
             }).then(function (res) {
-               if(res.value == 'work_ex') {
-                  botui.message.bot({ 
+               if(res.value == 'work_ex') 
+               {
+                  return botui.message.bot({ 
                   delay: 1000,
-                  content: 'Prior to CMU, I was working as a Product designer at Practo, a leading healthcare startup in India.'
+                  content: 'Prior to CMU, I was working as a Product designer at Practo, a leading healthcare startup in India. As part of the book team, I was responsible for the booking experience of the patients in the Prato platform.'
                   }).then(function(index){
                       setTimeout(showBookmark(index),1500);   
                       }).then(function(){
-                          botui.message.bot({ 
+                          return botui.message.bot({ 
                             delay: 1000,
-                            content: 'I have also worked as a User experience researcher and solid understanding of conceptualising and designing of end to end user experience'
+                            content: 'In the summer of 2015, I interned as a UX designer at Amazon India where I was responsible for redesigning the detail page for amazon mobile app'
                             });
-                          }).then(function(index){
-                              setTimeout(showBookmark(index),1500);   
-                              });
-                     }
-                
+                      }).then(function(index){
+                      setTimeout(showBookmark(index),1500);   
+                      }).then(function(){
+                           return botui.message.bot({ 
+                            delay: 1000,
+                           content: 'I have also worked as a research associate at Embedded Interactions lab and worked with Samsung over a year to design accessibility features for their flagship models'
+                          });
+                      }).then(function(index){
+                      setTimeout(showBookmark(index),1500);   
+                      }).then(function () {
+                         return botui.action.button({ // let user do something
+                         delay: 1000,
+                         action: [
+                                { 
+                                  text: 'Tell me more',
+                                  value: 'more'
+                                  
+                                },
+                                {
+                                  text: 'How can I reach out to you?',
+                                  value: 'reach_out'
+                                 
+                                }
+                              ]
+                            });
+                          }).then(function (res) {
+                                if(res.value == 'more') {
+                                  return botui.message.bot({ 
+                                   delay: 1000, 
+                                   content: 'While these experiences have helped me consolidate my learning of Human-centric Design processes they have also made me aware of the intricacies involved in developing products and services which are shippable to the commercial market', 
+                                    }).then(function(index){
+                                    setTimeout(showBookmark(index),1500);   
+
+                                    }).then(function (){
+                                    return botui.message.bot({ 
+                                    delay: 1000,
+                                    content: 'What else do you want to talk about? Select it from the menu on the left' ,
+                                     });
+                                    }); 
+                                  }
+
+                                else{
+                                  return botui.message.bot({ 
+                                  delay: 1000, 
+                                  content: 'Shoot me a mail at samadrid@andrew.cmu.edu', 
+                                  }).then(function(index){
+                                     setTimeout(showBookmark(index),1500);   
+                                  }).then(function (){
+                                     return botui.message.bot({ 
+                                      delay: 1000,
+                                      content: 'Alternatively if you are in Pittsburgh, I am always down for coffee ☕' ,
+                                      });
+                                  }); 
+
+                                }
+                            }); 
+                }   
+                                         
                 else{
                       return botui.message.bot({ 
                         // show first message
@@ -179,15 +236,140 @@ var botui = new BotUI('hello-world');
                         return botui.message.bot({ 
                         // show first message
                         delay: 1000,
-                        content: 'I pursued design in my undergraduate. It was here when I was formally introduced to the world of (and behind ) the screens 🖥️'
+                        content: 'I pursued design in my undergraduate. It was here when I was formally introduced to the world that does the magic behind and beyond the screens 🖥️'
                         });
                       }).then(function(index){
                       setTimeout(showBookmark(index),1500);   
+                      }).then(function () {
+             return botui.action.button({ // let user do something
+             delay: 1000,
+             action: [
+                    { 
+                      text: 'Where have you worked',
+                      value: 'work_ex'
+                      
+                    },
+                    {
+                      text: 'What skills ya got',
+                      value: 'skills'
+                     
+                    }
+                  ]
+                });
+            }).then(function (res) {
+              if (res==skills){
+                  return botui.message.bot({ 
+                      // show first message
+                      delay: 1000,
+                      content: 'I have hands-on experience with both conducting UX research as well designing user interfaces.'
+                      }).then(function(index){
+                      setTimeout(showBookmark(index),1500);   
+                    }).then(function(){
+                      return botui.message.bot({ 
+                      // show first message
+                      delay: 1000,
+                      content: 'Proficient in Sketch, Adobe Photoshop, Adobe Illustrator, Adobe Indesign and Principle'
                       });
-                     }
-                 });
+                    }).then(function(index){
+                      setTimeout(showBookmark(index),1500);   
+                    }).then(function(){
+                      return botui.message.bot({ 
+                      // show first message
+                      delay: 1000,
+                      content: 'Comfortable with HTML, CSS, Javascript, Jquery, C++/C'
+                      });
+                    }).then(function(index){
+                      setTimeout(showBookmark(index),1500);   
+                    }).then(function(){
+                      return botui.message.bot({ 
+                      // show first message
+                      delay: 1000,
+                      content: 'Occasionally tinker with arduino and sensors to build interactive prototypes '
+                      });
+                    }).then(function(index){
+                      setTimeout(showBookmark(index),1500);   
+                    });
+              }
+
+              else{
+                    return botui.message.bot({ 
+                  delay: 1000,
+                  content: 'Prior to CMU, I was working as a Product designer at Practo, a leading healthcare startup in India. As part of the book team, I was responsible for the booking experience of the patients in the Prato platform.'
+                  }).then(function(index){
+                      setTimeout(showBookmark(index),1500);   
+                      }).then(function(){
+                          return botui.message.bot({ 
+                            delay: 1000,
+                            content: 'In the summer of 2015, I interned as a UX designer at Amazon India where I was responsible for redesigning the detail page for amazon mobile app'
+                            });
+                      }).then(function(index){
+                      setTimeout(showBookmark(index),1500);   
+                      }).then(function(){
+                           return botui.message.bot({ 
+                            delay: 1000,
+                           content: 'I have also worked as a research associate at Embedded Interactions lab and worked with Samsung over a year to design accessibility features for their flagship models'
+                          });
+                      }).then(function(index){
+                      setTimeout(showBookmark(index),1500);   
+                      }).then(function () {
+                         return botui.action.button({ // let user do something
+                         delay: 1000,
+                         action: [
+                                { 
+                                  text: 'Tell me more',
+                                  value: 'more'
+                                  
+                                },
+                                {
+                                  text: 'How can I reach out to you?',
+                                  value: 'reach_out'
+                                 
+                                }
+                              ]
+                            });
+                          }).then(function (res) {
+                                if(res.value == 'more') {
+                                  return botui.message.bot({ 
+                                   delay: 1000, 
+                                   content: 'While these experiences have helped me consolidate my learning of Human-centric Design processes they have also made me aware of the intricacies involved in developing products and services which are shippable to the commercial market', 
+                                    }).then(function(index){
+                                    setTimeout(showBookmark(index),1500);   
+
+                                    }).then(function (){
+                                    return botui.message.bot({ 
+                                    delay: 1000,
+                                    content: 'What else do you want to talk about? Select it from the menu on the left' ,
+                                     });
+                                    }); 
+                                  }
+
+                                else{
+                                  return botui.message.bot({ 
+                                  delay: 1000, 
+                                  content: 'Shoot me a mail at samadrid@andrew.cmu.edu', 
+                                  }).then(function(index){
+                                     setTimeout(showBookmark(index),1500);   
+                                  }).then(function (){
+                                     return botui.message.bot({ 
+                                      delay: 1000,
+                                      content: 'Alternatively if you are in Pittsburgh, I am always down for coffee ☕' ,
+                                      });
+                                  }); 
+
+                                }
+                    });
+
+
+              }
+
+
+
+            });
+           }
+        });
       }
-      });
+
+     }); 
 
 
 
@@ -248,29 +430,37 @@ var skills = function(){
    delay: 1000, // wait 1 sec.
    content: 'What skills ya got?'
   }).then(function(){
-    botui.message.bot({ 
+    return botui.message.bot({ 
     // show first message
     delay: 1000,
     content: 'I have hands-on experience with both conducting UX research as well designing user interfaces.'
     });
+  }).then(function(index){
+    setTimeout(showBookmark(index),1500);   
   }).then(function(){
-    botui.message.bot({ 
+    return botui.message.bot({ 
     // show first message
     delay: 1000,
     content: 'Proficient in Sketch, Adobe Photoshop, Adobe Illustrator, Adobe Indesign and Principle'
     });
+  }).then(function(index){
+    setTimeout(showBookmark(index),1500);   
   }).then(function(){
-    botui.message.bot({ 
+    return botui.message.bot({ 
     // show first message
     delay: 1000,
     content: 'Comfortable with HTML, CSS, Javascript, Jquery, C++/C'
     });
+  }).then(function(index){
+    setTimeout(showBookmark(index),1500);   
   }).then(function(){
-    botui.message.bot({ 
+    return botui.message.bot({ 
     // show first message
     delay: 1000,
     content: 'Occasionally tinker with arduino and sensors to build interactive prototypes '
     });
+  }).then(function(index){
+    setTimeout(showBookmark(index),1500);   
   });
 
 }
@@ -286,13 +476,13 @@ var philosophy = function(){
    delay: 1000, // wait 1 sec.
    content: 'Do you have a design philosophy'
   }).then(function(){
-    botui.message.bot({ 
+    return botui.message.bot({ 
     // show first message
     delay: 1000,
     content: 'I am a strong believer in Function over form; Usability over aesthetics'
     });
   }).then(function(){
-    botui.message.bot({ 
+    return botui.message.bot({ 
     // show first message
     delay: 1000,
     content: 'Design thinking should be used to make a product useful above all. And this philosophy is reflected in all my work'
@@ -336,39 +526,36 @@ var journey = function(){
 }
 
 
-var experience = function(){
-  
-    botui.message.bot({ 
+var experience = function(){ 
+  return botui.message.bot({ 
       human: true,
       delay: 1000,
       content: 'Tell me about your work experience'
     }).then(function(){
         return botui.message.bot({ 
         delay: 1000,
-        content: 'Prior to CMU, I was working as a Product designer at Practo, a leading healthcare startup in India.'
+        content: 'Prior to CMU, I was working as a Product designer at Practo, a leading healthcare startup in India. As part of the book team, I was responsible for the booking experience of the patients in the Prato platform.'
         });
     }).then(function(index){
-       setTimeout(showBookmark(index),1500);   
+    setTimeout(showBookmark(index),1500);   
     }).then(function(){
-        botui.message.bot({ 
-        delay: 1000,
-        content: 'I have also worked as a User experience researcher and solid understanding of conceptualising and designing of end to end user experience'
-        });
-    }).then(function(index){
-     setTimeout(showBookmark(index),1500);   
-    });
+       return botui.message.bot({ 
+       delay: 1000,
+       content: 'In the summer of 2015, I interned as a UX designer at Amazon India where I was responsible for redesigning the detail page for amazon mobile app'
+       });
+    });  
 
 }
 
 
 var interest = function(){
 
-  botui.message.bot({
+  return botui.message.bot({
    human: true,
    delay: 1000, // wait 1 sec.
    content: 'What are your interest?'
   }).then(function(){
-    botui.message.bot({ 
+    return botui.message.bot({ 
     // show first message
     delay: 200,
     content: 'From e-textiles to driverless cars, Internet of Things is giving life to a growing range of everyday objects. My interest lies in helping people adapt to these emerging modalities of technologies'
@@ -432,12 +619,12 @@ var interest = function(){
 
 var research = function(){
 
-  botui.message.bot({
+  return botui.message.bot({
    human: true,
    delay: 1000, // wait 1 sec.
    content: 'Tell me about your research work'
   }).then(function(){
-    botui.message.bot({ 
+    return botui.message.bot({ 
     // show first message
     delay: 200,
     content: 'I view design thinking as a tool to solve complex humanitarian problem and this philosophy is reflected in my work I undertook during my undergraduate'
@@ -479,7 +666,7 @@ var research = function(){
 
 var exploration = function(){
 
-  botui.message.bot({
+  return botui.message.bot({
    human: true,
    delay: 1000, // wait 1 sec.
    content: 'What are you upto in college'
@@ -500,7 +687,7 @@ var exploration = function(){
 
 var achievements = function(){
 
-  botui.message.bot({
+  return botui.message.bot({
    human: true,
    delay: 1000, // wait 1 sec.
    content: 'Tell me about your achievements'
@@ -521,7 +708,7 @@ var achievements = function(){
 
 var book = function(){
 
-  botui.message.bot({
+  return botui.message.bot({
    human: true,
    delay: 1000, // wait 1 sec.
    content: 'What are you reading these days?'
@@ -537,7 +724,7 @@ var book = function(){
 
 var facts = function(){
 
-  botui.message.bot({
+  return botui.message.bot({
    human: true,
    delay: 1000, // wait 1 sec.
    content: 'Have fun facts to share? '
@@ -553,26 +740,24 @@ var facts = function(){
 
 var touch = function(){
 
-  botui.message.remove(index).then(function(){
     botui.message.bot({
-              human: true, // second one
-              delay: 1000, // wait 1 sec.
-              content: 'How can I reach out to you?',
-              })
-  }).then(function(){ 
-                return botui.message.bot({ 
-               delay: 1000, // wait 1 sec.
-              content: 'Shoot me a mail at samadrid@andrew.cmu.edu or connect to me https://www.linkedin.com/in/samadrita-das',    
-              })
-              }).then(function(index){
+      human: true, // second one
+      delay: 1000, // wait 1 sec.
+      content: 'How can I reach out to you?',
+    }).then(function(){ 
+      return botui.message.bot({ 
+      delay: 1000, // wait 1 sec.
+      content: 'Shoot me a mail at samadrid@andrew.cmu.edu or connect to me https://www.linkedin.com/in/samadrita-das',    
+      })
+    }).then(function(index){
   setTimeout(showBookmark(index),1500);   
   }).then(function (){
-                      return botui.message.bot({ // let user do something
-                      delay: 1000,
-                      content: 'Alternatively if you are in Pittsburgh, I am always down for coffee ☕' ,
-                      });
+      return botui.message.bot({ // let user do something
+      delay: 1000,
+      content: 'Alternatively if you are in Pittsburgh, I am always down for coffee ☕' ,
+  });
         
-                });
+  });
 }
 
   
@@ -674,20 +859,6 @@ var deleteListItem = function(text,msgno){
       }
  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
