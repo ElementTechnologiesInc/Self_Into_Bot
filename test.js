@@ -236,7 +236,7 @@ var botui = new BotUI('hello-world');
                         return botui.message.bot({ 
                         // show first message
                         delay: 1000,
-                        content: 'I pursued design in my undergraduate. It was here when I was formally introduced to the world that does the magic behind and beyond the screens 🖥️'
+                        content: 'I pursued design in my Indian Institute of Technology, Guwahati which is a premier engineering institute in India. It was here when I was formally introduced to the world that does the magic behind and beyond the screens 🖥️'
                         });
                       }).then(function(index){
                         setTimeout(showBookmark(index),1500);   
@@ -646,7 +646,7 @@ var research = function(){
     }).then(function () {
       return botui.message.bot({ // second one
       delay: 1000, // wait 1 sec.
-      content: 'You can find the papers here and here'
+      content: 'You can find the papers [here](https://dl.acm.org/citation.cfm?id=2836281) (which won the best student paper) and [here](https://dl.acm.org/citation.cfm?id=2836283)'
 
       })
     }).then(function () {
@@ -686,7 +686,7 @@ var exploration = function(){
     }).then(function () {
       return botui.message.bot({ // second one
       delay: 1000, // wait 1 sec.
-      content: 'My second project is a little too explorative as I am trying to build an electronic nose that can sense smell of food. Why? Because if done successfully this can be starting point for capturing smell',
+      content: 'My second project is a little too explorative because this summer, I wondered what would it be like if one could capture and send smell. As a result, I am trying to build an electronic nose that can sense smell of food',
       });
     });
 
